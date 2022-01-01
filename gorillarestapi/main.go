@@ -27,6 +27,7 @@ func main() {
 	r := mux.NewRouter().StrictSlash(false)
 	r.HandleFunc("/api/notes", GetNoteHandler).Methods("GET")
 	r.HandleFunc("/api/notes", PostNoteHandler).Methods("POST")
+	r.HandleFunc("/api/notes/{id}", PutNoteHandler).Methods("PUT")
 
 	// Step -2
 	server := &http.Server{Addr: ":8080", Handler: r}
@@ -70,4 +71,26 @@ func PostNoteHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	w.Write(j)
+}
+
+//HTTP Put - /api/notes/{id}
+func PutNoteHandler(w http.ResponseWriter, r *http.Request) {
+	var err error
+	vars := mux.Vars(r)
+	k := vars["id"]
+	var noteToUpd Note
+	// Decode the incoming Note json
+	err = json.NewDecoder(r.Body).Decode(&noteToUpd)
+	if err != nil {
+		panic(err)
+	}
+	if _, ok := noteStore[k]; ok {
+		// noteToUpd.CreatedOn = note.CreatedOn
+		//delete existing item and add the updated item
+		delete(noteStore, k)
+		noteStore[k] = noteToUpd
+	} else {
+		log.Printf("Could not find key of Note %s to delete", k)
+	}
+	w.WriteHeader(http.StatusNoContent)
 }
