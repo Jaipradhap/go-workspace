@@ -23,11 +23,10 @@ docker run --link mongodb:mongo -p 8081:8081 -e ME_CONFIG_MONGODB_URL="mongodb:/
 After above DB setup, next time onwards use the following steps : <br/>
 docker start mongodb  <br/>
 docker run --link mongodb:mongo -p 8081:8081 -e ME_CONFIG_MONGODB_URL="mongodb://mongo:27017" mongo-express <br/>
-mongo ui -- http://localhost:8081
-
-
-mongodb://<username>:<password>@<host>:<port>/?authSource=admin
-mongodb://mongoadmin:secret@localhost:27888/?authSource=admin
+mongo ui -- http://localhost:8081 <br/>
 
 
 https://www.mongodb.com/blog/post/mongodb-go-driver-tutorial
+
+mongodb://<username>:<password>@<host>:<port>/?authSource=admin
+mongodb://mongoadmin:secret@localhost:27888/?authSource=admin <br/>
