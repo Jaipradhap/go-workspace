@@ -30,3 +30,18 @@ https://www.mongodb.com/blog/post/mongodb-go-driver-tutorial
 
 mongodb://<username>:<password>@<host>:<port>/?authSource=admin
 mongodb://mongoadmin:secret@localhost:27888/?authSource=admin <br/>
+
+Authentication :
+----------------
+Cookie based  - session holds the auth info.Stateful One. <br/>
+Token based - JWT , oAuth 2 <br/>
+
+1.oAuth 2 : <br/>
+Step -1 : Register App with identity providers such Azure, Facebook,Google. it gives you a client ID and a client secret key <br/>
+Step -2 : Once hit with above ID & Key, auth server provides Access Token<br/> 
+
+2.JWT : <br/> 
+Step -1 : After successful login , Access tokens are generated & signed securely.<br/>
+Step -2 : Subsequent HTTP Request have Authorization Header - bearer token & gets validated at web server end.<br/>
+
+
