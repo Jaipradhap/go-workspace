@@ -44,7 +44,10 @@ Step -2 : Once hit with above ID & Key, auth server provides Access Token<br/>
 Step -1 : After successful login , Access tokens are generated & signed securely.<br/>
 Step -2 : Subsequent HTTP Request have Authorization Header - bearer token & gets validated at web server end.<br/>
 
-########################<br/>
+<br/>
+Swagger 
+--------
+<br/>
 
 1.swagger api in go
 
@@ -87,7 +90,10 @@ func main() {
 
 http://localhost:8080/swagger/index.html
 
-#########################<br/>
+<br/>
+DOckerFile :
+------------
+<br/>
 1.Docker File for golang : https://www.youtube.com/watch?v=USbPCBi_d4U   <br/>
 
 FROM  <br/>
